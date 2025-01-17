@@ -1,0 +1,31 @@
+broker:
+  name: "tdameritrade"
+  paper_trading: true
+  api_key: ${TD_API_KEY}
+  account_id: ${TD_ACCOUNT_ID}
+  max_positions: 3
+  max_loss_percent: 2.0
+
+trading:
+  max_position_size: 1000
+  stop_loss_percent: 1.0
+  take_profit_percent: 2.0
+  max_trades_per_day: 5
+  trading_hours:
+    start: "09:30"
+    end: "16:00"
+
+gpt:
+  model: "gpt-4"
+  api_key: ${OPENAI_API_KEY}
+  temperature: 0.3
+  max_tokens: 500
+
+analysis:
+  timeframe: "1d"
+  indicators:
+    - "IV_percentile"
+    - "RSI"
+    - "MACD"
+  min_volume: 1000
+  min_option_volume: 100
