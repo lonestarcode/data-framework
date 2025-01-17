@@ -30,14 +30,7 @@ Data Workflow: Multi-Purpose Data Management
 Each project maintains its own local database within its respective directory under projects/applications/. This ensures that:
 	•	Users can directly interact with the raw, unprocessed data specific to the application.
 	•	Data is accessible in its native structure and format for the intended functionality of the project.
-Example Directory Structure for Facebook Marketplace Monitor:
 
-facebook-market/
-├── data/                # Project-specific data
-│   ├── listings_raw.json # Unprocessed marketplace listings
-│   ├── listings_cleaned.json # Processed and normalized data
-│   └── notifications.db # Notification and alert data
-└── scripts/             # Data scraping and processing scripts
 
 
 	2.	Global Data Consolidation
