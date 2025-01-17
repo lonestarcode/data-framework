@@ -1,6 +1,6 @@
 # Data Science Framework
 
-A comprehensive data science platform featuring advanced scraping, machine learning, and automated trading capabilities. This framework provides a production-ready foundation for building and deploying data-driven applications with robust processing pipelines and monitoring systems.
+A comprehensive data science platform featuring advanced scraping, machine learning, and automated workflow capabilities. This framework provides a production-ready foundation for building and deploying data-driven applications with robust processing pipelines and monitoring systems.
 
 ## Core Capabilities
 
