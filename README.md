@@ -1,9 +1,4 @@
-I'll help update the README.md to reflect the current project structure with the news and facebook marketplace scrapers. Here's the modified version:
-
-```markdown:README.md
-# Data Framework
-
-A modular and scalable architecture designed to handle a variety of data science tasks, including data scraping, machine learning (ML), monitoring, and deployment. It serves as a robust starting point for building data science projects with components for preprocessing, training, evaluation, and deployment workflows.
+Modular and scalable architecture designed to handle a variety of data science tasks, including data scraping, machine learning (ML), monitoring, and deployment. It serves as a robust starting point for building data science projects with components for preprocessing, training, evaluation, and deployment workflows.
 
 ## Features
 - Modular Structure: Organized directories for clear separation of concerns.
