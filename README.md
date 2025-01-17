@@ -53,8 +53,7 @@ For each application, raw data remains accessible for its core functionality. Ex
 ## Data Processing Pipeline
 
 ### 1. Data Collection
-- Applications collect raw data through various scrapers and APIs
-- Data sources include Facebook Marketplace, news sites, financial APIs, etc.
+- Applications collect raw data through various scrapers and APIs.
 - Each application maintains its own collection logic while adhering to global standards
 
 ### 2. Data Consolidation
