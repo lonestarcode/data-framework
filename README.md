@@ -77,9 +77,3 @@ pip install -r requirements.txt
 - Comprehensive error handling
 - Real-time notifications
 
-## Contributing
-
-Contributions are welcome! To contribute:
-1. Fork the repository
-2. Create a feature branch
-3. Submit a pull request
