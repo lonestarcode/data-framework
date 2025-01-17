@@ -1,0 +1,20 @@
+development:
+  aws_region: us-east-1
+  ecs_cluster: scraper-cluster-dev
+  ecr_repository: scraper-dev
+  rds_instance: scraper-db-dev
+  redis_cluster: scraper-cache-dev
+
+staging:
+  aws_region: us-east-1
+  ecs_cluster: scraper-cluster-staging
+  ecr_repository: scraper-staging
+  rds_instance: scraper-db-staging
+  redis_cluster: scraper-cache-staging
+
+production:
+  aws_region: us-east-1
+  ecs_cluster: scraper-cluster-prod
+  ecr_repository: scraper-prod
+  rds_instance: scraper-db-prod
+  redis_cluster: scraper-cache-prod 
