@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Property Analysis Tool</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Merged CSS Styles -->
+    <style>
+        /* Merged CSS Styles */
+
+        body {
+            font-family: 'MS Sans Serif', 'Microsoft Sans Serif', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #c0c0c0;
+        }
+
+        .header {
+            background-color: #808080;
+            padding: 5px;
+            border: 2px solid;
+            border-color: #ffffff #404040 #404040 #ffffff;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-title {
+            color: #ffffff;
+            font-size: 20px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .main-container {
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .analysis-container {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .analysis-column {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .category {
+            background-color: #c0c0c0;
+            border: 2px solid;
+            border-color: #ffffff #404040 #404040 #ffffff;
+            padding: 5px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .category h3 {
+            margin: 0 0 5px 0;
+            padding: 5px;
+            background: #808080;
+            border: 2px solid;
+            border-color: #404040 #ffffff #ffffff #404040;
+            font-size: 12px;
+            color: #ffffff;
+        }
+
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 5px;
+        }
+
+        .form-label {
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+
+        .search-input {
+            padding: 3px;
+            width: 100%;
+            background: #ffffff;
+            border: 2px solid;
+            border-color: #404040 #ffffff #ffffff #404040;
+            font-family: 'MS Sans Serif', 'Microsoft Sans Serif', sans-serif;
+            font-size: 10px;
+        }
+
+        .action-button {
+            padding: 3px 10px;
+            cursor: pointer;
+            background-color: #c0c0c0;
+            border: 2px solid;
+            border-color: #ffffff #404040 #404040 #ffffff;
+            font-family: 'MS Sans Serif', 'Microsoft Sans Serif', sans-serif;
+            font-size: 10px;
+            margin-top: 5px;
+        }
+
+        .action-button i {
+            margin-right: 5px;
+        }
+
+        .action-button:active {
+            border-color: #404040 #ffffff #ffffff #404040;
+            padding: 6px 14px 4px 16px;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+            padding: 3px;
+            background: #ffffff;
+            border: 2px solid;
+            border-color: #404040 #ffffff #ffffff #404040;
+        }
+
+        .metric-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 3px;
+            border-bottom: 1px solid #808080;
+        }
+
+        .metric-label {
+            font-weight: bold;
+            color: #000080;
+        }
+
+        .financial-inputs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+        }
+
+        .financial-divider {
+            margin: 10px 0;
+            border: none;
+            border-top: 1px solid #808080;
+        }
+
+        .financial-single-column {
+            margin-top: 5px;
+        }
+
+        #streetview {
+            height: 800px;
+            width: 100%;
+            background: #ffffff;
+            border: 2px solid;
+            border-color: #404040 #ffffff #ffffff #404040;
+            margin-top: 10px;
+        }
+
+        .single-line {
+            grid-column: span 2;
+        }
+
+        .analysis-section {
+            margin-bottom: 20px;
+        }
+
+        .analysis-subtitle {
+            font-size: 14px;
+            color: #000080;
+            margin: 10px 0;
+            padding: 5px;
+            background: #d4d4d4;
+            border: 1px solid #808080;
+        }
+
+        .results-container {
+            background-color: #f0f0f0;
+            border: 2px solid;
+            border-color: #404040 #ffffff #ffffff #404040;
+            padding: 5px;
+            flex: 1;
+            min-height: 250px;
+            margin-bottom: 10px;
+        }
+
+        .export-section {
+            margin-top: auto;
+            padding-top: 10px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .subheader {
+            background-color: #c0c0c0;
+            padding: 5px;
+            border: 2px solid;
+            border-color: #ffffff #404040 #404040 #ffffff;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .location-inputs {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            max-width: 100%;
+        }
+
+        .location-inputs .input-group {
+            display: flex;
+            gap: 20px;
+            align-items: flex-end;
+        }
+
+        .location-inputs .input-group:first-child {
+            margin-right: 40px;
+        }
+
+        .location-inputs .input-container {
+            margin-bottom: 0;
+        }
+
+        .location-inputs .search-input {
+            height: 20px;
+        }
+
+        .location-inputs .form-label {
+            font-size: 10px;
+            margin-bottom: 1px;
+        }
+
+        .show-details-button {
+            background-color: #c0c0c0;
+            border: 2px solid;
+            border-color: #ffffff #404040 #404040 #ffffff;
+            padding: 3px 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .show-details-button i {
+            margin-left: 5px;
+        }
+
+        #scenarioResults, #aiResults, #advancedAnalysisResults {
+            min-height: 150px;
+        }
+
+        .section-divider {
+            border: none;
+            border-top: 4px solid #808080;
+            margin: 10px 0;
+            width: 100%;
+        }
+
+        .auth-links {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .auth-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 5px 10px;
+            border: 2px solid;
+            border-color: #ffffff #404040 #404040 #ffffff;
+            background-color: #808080;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .auth-link:hover {
+            background-color: #404040;
+        }
+
+        .subheader-buttons {
+            display: flex;
+            align-items: flex-end;
+            gap: 10px; /* Space between buttons */
+        }
+
+        .settings-button {
+            background-color: #808080;
+            border: 2px solid;
+            border-color: #ffffff #404040 #404040 #ffffff;
+            padding: 5px 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            color: #ffffff;
+        }
+
+        .settings-button i {
+            font-size: 14px;
+        }
+
+        .or-text-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+        }
+
+        .or-text {
+            font-size: 14px;
+            font-weight: bold;
+            font-style: italic;
+            color: #000;
+        }
+
+        .location-inputs .input-group:nth-child(3) {
+            margin-left: 20px;
+        }
+
+        .property-details-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            width: 100%;
+            padding: 5px;
+        }
+
+        .property-details-grid .input-container {
+            margin-bottom: 0;
+        }
+
+        .property-details-grid .search-input {
+            width: 100%;
+            height: 20px;
+        }
+
+        .property-details-grid .form-label {
+            font-size: 10px;
+            margin-bottom: 1px;
+            color: #000;
+        }
+
+        .analysis-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .analysis-column {
+            flex: 1;
+            display: flex;
+            min-width: 0;
+        }
+
+        .analysis-column .category {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            padding: 5px;
+            flex: 1;
+            align-content: start;
+        }
+
+        .metric-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 3px;
+            border-bottom: 1px solid #808080;
+        }
+
+        .metric-item.single-line {
+            grid-column: span 2;
+            margin-top: auto;
+        }
+
+        .detail-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .detail-label {
+            font-size: 10px;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .detail-value {
+            background-color: #f0f0f0;
+            border: 2px solid;
+            border-color: #404040 #ffffff #ffffff #404040;
+            padding: 3px 5px;
+            font-size: 12px;
+            height: 20px;
+            color: #000;
+        }
+
+        .input-container.narrow {
+            width: 150px;  /* Makes the input containers narrower */
+        }
+
+        .financial-single-column .financial-inputs-grid {
+            justify-content: flex-start;  /* Aligns items to the start */
+            gap: 20px;  /* Adds space between the inputs */
+        }
+    </style>
+</head>
+<body>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    
+    <!-- Header -->
+    <div class="header">
+        <div class="nav-container">
+            <a href="/" class="nav-title">
+                <i class="fas fa-home"></i>&nbsp;Property Analysis Tool
+            </a>
+            <div class="auth-links">
+                <a href="/register" class="auth-link">Register</a>
+                <a href="/login" class="auth-link">Login</a>
+                <button class="settings-button" onclick="openSettings()">
+                    <i class="fas fa-cog"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- New subheader with location inputs -->
+    <div class="subheader">
+        <div class="location-inputs">
+            <div class="input-group">
+                <div class="input-container">
+                    <label for="street" class="form-label">Street</label>
+                    <input type="text" class="search-input" id="street" required>
+                </div>
+                <div class="input-container">
+                    <label for="city" class="form-label">City</label>
+                    <input type="text" class="search-input" id="city" required>
+                </div>
+                <div class="input-container">
+                    <label for="state" class="form-label">State</label>
+                    <input type="text" class="search-input" id="state" required>
+                </div>
+                <button class="show-details-button" onclick="searchByAddress()">
+                    <i class="fas fa-arrow-up"></i>
+                </button>
+            </div>
+            <div class="or-text-container">
+                <span class="or-text">OR</span>
+            </div>
+            <div class="input-group">
+                <div class="input-container">
+                    <label for="latitude" class="form-label">Latitude</label>
+                    <input type="number" step="any" class="search-input" id="latitude">
+                </div>
+                <div class="input-container">
+                    <label for="longitude" class="form-label">Longitude</label>
+                    <input type="number" step="any" class="search-input" id="longitude">
+                </div>
+                <button class="show-details-button" onclick="searchByCoordinates()">
+                    <i class="fas fa-arrow-up"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Property Details Subheader -->
+    <div class="subheader">
+        <div class="property-details-grid">
+            <div class="detail-container">
+                <label class="detail-label">Property Type</label>
+                <div class="detail-value" id="propertyTypeDisplay">--</div>
+            </div>
+            <div class="detail-container">
+                <label class="detail-label">Year Built</label>
+                <div class="detail-value" id="yearBuiltDisplay">--</div>
+            </div>
+            <div class="detail-container">
+                <label class="detail-label">Square Feet</label>
+                <div class="detail-value" id="squareFeetDisplay">--</div>
+            </div>
+            <div class="detail-container">
+                <label class="detail-label">Lot Size (sq ft)</label>
+                <div class="detail-value" id="lotSizeDisplay">--</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Cost and Revenue Analysis Container -->
+        <div class="analysis-container">
+            <!-- Fixed Cost Estimates -->
+            <div class="analysis-column">
+                <div class="category">
+                    <h3>Fixed Cost Estimates</h3>
+                    <div class="metrics-grid">
+                        <div class="metric-item">
+                            <span class="metric-label">Property Tax (Annual):</span>
+                            <span class="metric-value" id="propertyTax">--</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Insurance (Annual):</span>
+                            <span class="metric-value" id="insurance">--</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Maintenance (Annual):</span>
+                            <span class="metric-value" id="maintenance">--</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Utilities (Monthly):</span>
+                            <span class="metric-value" id="utilities">--</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">HOA (Monthly):</span>
+                            <span class="metric-value" id="hoa">--</span>
+                        </div>
+                        <div class="metric-item single-line">
+                            <span class="metric-label">Total Annual Fixed Costs:</span>
+                            <span class="metric-value" id="totalFixedCosts">--</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Revenue Estimates -->
+            <div class="analysis-column">
+                <div class="category">
+                    <h3>Revenue Estimates</h3>
+                    <div class="metrics-grid">
+                        <div class="metric-item">
+                            <span class="metric-label">Average Monthly Rent:</span>
+                            <span class="metric-value" id="baseMonthlyRent">--</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Occupancy Rate (%):</span>
+                            <span class="metric-value" id="occupancyRate">95</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Additional Revenue:</span>
+                            <span class="metric-value" id="additionalRevenue">--</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Net Monthly Revenue:</span>
+                            <span class="metric-value" id="netMonthlyRevenue">--</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Net Operating Income:</span>
+                            <span class="metric-value" id="netOperatingIncome">--</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Cap Rate (%):</span>
+                            <span class="metric-value" id="capRate">--</span>
+                        </div>
+                        <div class="metric-item single-line">
+                            <span class="metric-label">Total Annual Revenue:</span>
+                            <span class="metric-value" id="totalAnnualRevenue">--</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scenario Analysis Container -->
+        <div class="analysis-container">
+            <!-- Scenario Input -->
+            <div class="analysis-column">
+                <div class="category">
+                    <h3>Scenario Input</h3>
+                    <div class="financial-inputs-grid">
+                        <div class="input-container">
+                            <label for="downPayment" class="form-label">Down Payment ($)</label>
+                            <input type="number" class="search-input" id="downPayment" required>
+                        </div>
+                        <div class="input-container">
+                            <label for="loanAmount" class="form-label">Loan Amount ($)</label>
+                            <input type="number" class="search-input" id="loanAmount" required>
+                        </div>
+                        <div class="input-container">
+                            <label for="interestRate" class="form-label">Interest Rate (%)</label>
+                            <input type="number" step="0.01" class="search-input" id="interestRate" required>
+                        </div>
+                        <div class="input-container">
+                            <label for="loanTerm" class="form-label">Loan Term (years)</label>
+                            <input type="number" class="search-input" id="loanTerm" value="30" required>
+                        </div>
+                    </div>
+                    <hr class="financial-divider">
+                    <div class="financial-single-column">
+                        <div class="financial-inputs-grid">
+                            <div class="input-container narrow">
+                                <label for="analysisYears" class="form-label">Analysis Period (years)</label>
+                                <input type="number" class="search-input" id="analysisYears" value="5">
+                            </div>
+                            <div class="input-container narrow">
+                                <label for="appreciationRate" class="form-label">Expected Appreciation (%)</label>
+                                <input type="number" step="0.1" class="search-input" id="appreciationRate" value="3">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: flex; justify-content: flex-end; margin-top: 15px;">
+                        <button type="button" class="action-button" onclick="runAdvancedAnalysis()">
+                            <i class="fas fa-chart-line"></i> Run Scenario Estimate(s)
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scenario Estimates -->
+            <div class="analysis-column">
+                <div class="category">
+                    <h3>Scenario Estimate(s)</h3>
+                    <div id="scenarioResults" class="results-container">
+                        <!-- Scenario results will be populated here -->
+                    </div>
+                    <div class="export-section">
+                        <button class="action-button" onclick="exportPropertyDetailsAndCostEstimates()">
+                            <i class="fas fa-file-excel"></i> Export Results
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Insights and Summary Container -->
+        <div class="analysis-container">
+            <!-- AI Insights -->
+            <div class="analysis-column">
+                <div class="category">
+                    <h3>AI Insights</h3>
+                    <div id="aiResults" class="results-container">
+                        <!-- AI/ML results will be populated here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Summary -->
+            <div class="analysis-column">
+                <div class="category">
+                    <h3>Summary</h3>
+                    <div id="advancedAnalysisResults" class="results-container">
+                        <!-- Advanced analysis results will be populated here -->
+                    </div>
+                    <div class="export-section">
+                        <button class="action-button" onclick="exportToExcel()">
+                            <i class="fas fa-file-excel"></i> Export Analysis
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Street View (Full Width) -->
+        <div class="category">
+            <h3>Street View</h3>
+            <div id="streetview"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&libraries=places"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    <script>
+        function searchByAddress() {
+            // Logic to search by address
+            alert('Searching by address.');
+        }
+
+        function searchByCoordinates() {
+            // Logic to search by coordinates
+            alert('Searching by coordinates.');
+        }
+
+        function openSettings() {
+            // Logic to open settings
+            alert('Opening settings.');
+        }
+    </script>
+</body>
+</html>
