@@ -52,10 +52,10 @@ A comprehensive data science platform featuring advanced scraping, machine learn
    -  provides sentiment, bias, keyword, language, etc. analysis
 
 3. **Automated Workflow:**
-   - `content-generator` combines summaries, analysis, and user input to produce polished articles pertaining to the scraped data.
+   - `content-generator` combines summaries, analysis, and user input to produce polished articles, study material, lectures, etc. pertaining to the scraped data.
 
 4. **Output:**
-   - The final articles are saved and made available for user interaction or publication.
+   - The content generated is saved and made available for user interaction or publication.
 
 ---
 
