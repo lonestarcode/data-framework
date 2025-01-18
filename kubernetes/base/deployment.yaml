@@ -19,17 +19,50 @@ spec:
         - containerPort: 8000
         resources:
           requests:
-            memory: "256Mi"
-            cpu: "250m"
-          limits:
             memory: "512Mi"
             cpu: "500m"
+          limits:
+            memory: "1Gi"
+            cpu: "1000m"
         env:
         - name: ENVIRONMENT
           value: "production"
+        - name: PYTHONUNBUFFERED
+          value: "1"
+        - name: OPENAI_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: api-secrets
+              key: openai-api-key
+        volumeMounts:
+        - name: data-volume
+          mountPath: /app/data
         livenessProbe:
           httpGet:
             path: /health
             port: 8000
           initialDelaySeconds: 30
           periodSeconds: 10
+      
+      - name: ml-training
+        image: data-framework-ml:latest
+        resources:
+          requests:
+            memory: "2Gi"
+            cpu: "1000m"
+            nvidia.com/gpu: "1"
+          limits:
+            memory: "4Gi"
+            cpu: "2000m"
+            nvidia.com/gpu: "1"
+        volumeMounts:
+        - name: model-volume
+          mountPath: /app/models
+      
+      volumes:
+      - name: data-volume
+        persistentVolumeClaim:
+          claimName: data-pvc
+      - name: model-volume
+        persistentVolumeClaim:
+          claimName: model-pvc

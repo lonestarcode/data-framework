@@ -5,3 +5,9 @@ resources:
 - deployment.yaml
 - service.yaml
 - ingress.yaml
+- pvc.yaml
+- configmap.yaml
+- secrets.yaml
+
+commonLabels:
+  app: data-framework

@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  PROMETHEUS_PORT: "9090"
+  GRAFANA_PORT: "3000"
+  ML_MODEL_PATH: "/app/models"
+  LOG_LEVEL: "INFO"
+  SCRAPING_INTERVAL: "300"
