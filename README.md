@@ -4,23 +4,6 @@ A comprehensive data science platform featuring advanced scraping, machine learn
 
 ## 🚀 Core Features
 
-### Data Collection & Processing
-- Multi-source data scraping with configurable filters
-- Real-time data streaming and processing
-- Automated validation and cleaning pipelines
-- Structured data storage with MongoDB and SQL integration
-
-### Machine Learning & Analysis
-- NLP-powered content analysis
-- Market prediction models
-- Automated trading algorithms
-- Continuous model training and evaluation
-
-### Deployment & Monitoring
-- Docker containerization
-- Kubernetes orchestration
-- Cloud-native infrastructure (AWS CDK)
-- Comprehensive monitoring and logging
 
 
 
@@ -42,8 +25,104 @@ A comprehensive data science platform featuring advanced scraping, machine learn
 
 
 
+Applications will have their own local databases, but the data will also be stored in a global database for ML and analytics.
 
-*** While the framework consolidates and prepares data for machine learning analysis in a centralized data/ directory, it also retains project-specific data for user interaction. This dual approach ensures that the integrity and purpose of individual projects remain intact, enabling direct interaction and analysis without compromising the broader ML workflows***
+1. **Local Database (Application-Specific)**
+- Each application (scraping, analytics, workflows) maintains its own database in its directory
+- Purpose:
+  - Maintains data in its original format
+  - Allows direct application-specific operations
+  - Preserves raw data integrity
+- Example structure:
+```python
+# apps/scraping/models.py
+class RawScrapedData(models.Model):
+    source = models.CharField(max_length=100)  # e.g., "facebook", "twitter"
+    raw_content = models.JSONField()  # Keeps original format
+    scraped_at = models.DateTimeField(auto_now_add=True)
+    metadata = models.JSONField()  # Source-specific metadata
+```
+
+2. **Global Database (ML & Analytics)**
+- Centralized data storage in `data/` directory
+- Purpose:
+  - ML model training
+  - Cross-project analytics
+  - System-wide data access
+- Example structure:
+```python
+# apps/analytics/models.py
+class GlobalMLData(models.Model):
+    source_app = models.CharField(max_length=100)  # Origin application
+    data_type = models.CharField(max_length=50)    # "text", "market", etc.
+    processed_content = models.JSONField()         # Standardized format
+    created_at = models.DateTimeField(auto_now_add=True)
+    features = models.JSONField()                  # ML-ready features
+```
+
+*** Data Flow ***
+```python
+# services/data_service.py
+class DataService:
+    async def process_raw_data(self, data: Dict, source_app: str) -> Dict:
+        """Handle dual storage of data"""
+        try:
+            # 1. Store in local app database
+            local_data = RawScrapedData.objects.create(
+                source=source_app,
+                raw_content=data,
+                metadata=self._extract_metadata(data)
+            )
+            
+            # 2. Process and store in global ML database
+            processed_data = self._standardize_format(data)
+            global_data = GlobalMLData.objects.create(
+                source_app=source_app,
+                data_type=self._determine_data_type(data),
+                processed_content=processed_data,
+                features=self._extract_ml_features(processed_data)
+            )
+            
+            return {
+                'local_id': local_data.id,
+                'global_id': global_data.id,
+                'status': 'success'
+            }
+            
+        except Exception as e:
+            logger.error(f"Data processing error: {str(e)}")
+            raise
+```
+
+4. **Benefits**:
+- Applications maintain autonomy with their own data
+- ML systems get standardized data for training
+- No data loss from original sources
+- Efficient querying for specific use cases
+- Clear separation of concerns
+
+5. **Example Usage**:
+```python
+# Local database query (application-specific)
+facebook_posts = RawScrapedData.objects.filter(
+    source='facebook',
+    scraped_at__gte=yesterday
+).values('raw_content')
+
+# Global database query (ML training)
+training_data = GlobalMLData.objects.filter(
+    data_type='text',
+    created_at__gte=last_month
+).values('features')
+```
+
+This approach ensures that:
+1. Applications can work with their native data structures
+2. ML models get consistent, processed data
+3. Original data is preserved
+4. System can scale independently for different use cases
+
+
 
 Data Workflow: Multi-Purpose Data Management
 	1.	Raw Data Retention
