@@ -1,4 +1,91 @@
-BACKEND 
+
+# Backend Service
+
+A Spring Boot-based orchestration layer that coordinates data flow, analytics processing, and automated workflows across the entire data science framework.
+
+## Overview
+This backend service manages and orchestrates Python-based applications for:
+- Data scraping and collection
+- Analytics and ML processing
+- Automated workflow execution
+- System monitoring and logging
+
+## Structure
+- `src/main/java/com/dataframework/`
+  - `config/`: Spring configurations for databases, Python integration
+  - `controller/`: REST API endpoints
+  - `service/`: Business logic and service coordination
+  - `model/`: Data models and entities
+  - `repository/`: Data access interfaces
+  - `orchestration/`: Python service coordination
+
+## Features
+- Python service orchestration
+- Dual database management (MongoDB & SQL)
+- Centralized API gateway
+- ML model deployment coordination
+- Task scheduling and monitoring
+- Cross-application data flow
+- Performance tracking
+- Error handling and recovery
+
+## Data Management
+- MongoDB: Unstructured data, real-time operations
+- PostgreSQL: Structured data, analytics results
+- Python script execution management
+- Cache coordination
+- Database migrations
+
+## Prerequisites
+- Java 17+
+- Python 3.9+
+- MongoDB
+- PostgreSQL
+- Maven
+
+## Configuration
+- Database connections
+- Python environment settings
+- API configurations
+- Monitoring parameters
+- Logging preferences
+
+## Integration Points
+- Python scraping applications
+- Analytics processing pipelines
+- ML model training and deployment
+- Automated workflow execution
+- System monitoring and metrics
+
+## Development
+1. Build the project:
+```bash
+mvn clean install
+```
+
+2. Run the application:
+```bash
+mvn spring-boot:run
+```
+
+3. Access the API:
+```
+http://localhost:8080/api/v1/
+```
+
+## Contributing
+1. Fork the repository
+2. Create feature branch
+3. Commit changes
+4. Push to branch
+5. Create Pull Request
+
+## License
+[Your License Here]
+
+
+
+
 
 2. **Key Components to Create**:
 
