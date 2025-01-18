@@ -633,7 +633,7 @@ cdk deploy
 
 ## Documentation
 
-Each application includes detailed documentation:
+Each advanced application includes detailed documentation:
 - [News Summarizer Documentation](projects/applications/news-summary/README.md)
 - [Facebook Marketplace Documentation](projects/applications/facebook-market/README.md)
 - [Property Analysis Documentation](projects/applications/property-analysis/README.md)
