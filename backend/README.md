@@ -1,7 +1,3 @@
-Based on the codebase, here's what you'd need to do to replace Django with Spring Boot while keeping Python for core functionality:
-
-1. **New Spring Boot Structure**:
-```
 backend/
 ├── src/
 │   ├── main/
