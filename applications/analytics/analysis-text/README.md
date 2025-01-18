@@ -1,205 +1,156 @@
-📚 TextAnalysis Project 🚀
+# Text Analysis Framework
 
-Overview
+Advanced Natural Language Processing (NLP) pipeline for processing and analyzing textual data. Integrates multiple analysis types including summarization, sentiment analysis, topic modeling, bias detection, and language identification.
 
-TextAnalysis is a modular NLP (Natural Language Processing) system designed to process and analyze text data from various sources, such as social media feeds, articles, or raw text files. The project focuses on four primary analysis tasks:
-	1.	Bias Analysis: Detects and scores potential biases in text.
-	2.	Sentiment Analysis: Determines if text sentiment is positive, negative, or neutral.
-	3.	Topic Modeling: Identifies dominant topics in a collection of texts.
-	4.	Language Detection: Detects the language of text content.
+## 🎯 Purpose
 
-This project is scalable, modular, and automation-ready, allowing easy integration with APIs and external systems.
+Text-Analysis serves as the central processing hub for all text data in the framework, providing:
+- Text summarization using GPT models
+- Sentiment analysis and emotional tone detection
+- Topic modeling and theme clustering
+- Bias detection and analysis
+- Language identification and validation
 
-📂 Directory Structure
+## 🏗 Architecture
 
-TextAnalysis/
-├── README.md                  <-- Project documentation
-├── app.py                     <-- Main script for running the application
-├── config.py                  <-- Configuration settings
-├── requirements.txt           <-- Dependencies
-│
-├── data/                      <-- Data storage
-│   ├── bias_analysis/
-│   │   ├── raw/               <-- Raw input data
-│   │   ├── processed/         <-- Preprocessed data
-│   │   ├── analysis_logs/     <-- Analysis results
-│   │
-│   ├── sentiment_analysis/    <-- Sentiment datasets
-│   ├── topic_modeling/        <-- Topic modeling datasets
-│   ├── language_detection/    <-- Language datasets
-│
-├── models/                    <-- Machine Learning models
-│   ├── bias_analysis/         
-│   ├── sentiment_analysis/    
-│   ├── topic_modeling/        
-│   ├── language_detection/    
-│
-├── scripts/                   <-- Automation scripts
-│   ├── preprocess_bias_data.py
-│   ├── run_bias_analysis.py
-│   ├── bias_analysis_pipeline.sh
-│   ├── preprocess_sentiment_data.py
-│   ├── run_sentiment_analysis.py
-│   ├── sentiment_analysis_pipeline.sh
-│   ├── preprocess_topic_data.py
-│   ├── run_topic_analysis.py
-│   ├── topic_analysis_pipeline.sh
-│   ├── preprocess_lang_data.py
-│   ├── run_lang_detection.py
-│   ├── lang_detection_pipeline.sh
-│
-├── src/                      
-│   ├── api/                  <-- API endpoints
-│   │   ├── bias_analysis_api.py
-│   │   ├── sentiment_analysis_api.py
-│   │   ├── topic_analysis_api.py
-│   │   ├── lang_detection_api.py
+The project is organized into specialized modules:
 
-🚀 Key Features
-	1.	Bias Analysis:
-	•	Preprocesses and analyzes text for biased language.
-	•	Outputs bias scores per text snippet.
-	2.	Sentiment Analysis:
-	•	Classifies text as positive, negative, or neutral.
-	•	Utilizes Naive Bayes Classifier for predictions.
-	3.	Topic Modeling:
-	•	Extracts dominant topics using LDA (Latent Dirichlet Allocation).
-	•	Provides topic distribution for each text.
-	4.	Language Detection:
-	•	Detects text language using the langdetect library.
-	•	Supports multiple languages (en, es, fr, de).
-	5.	Automation Pipelines:
-	•	End-to-end pipeline scripts for preprocessing, analysis, and logging.
-	6.	API Integration:
-	•	RESTful APIs for accessing analysis results programmatically.
+```
+analysis-text/
+├── models/                    # Core analysis models
+│   ├── summarization/        # Text summarization
+│   ├── sentiment_analysis/   # Sentiment detection
+│   ├── topic_modeling/       # Topic identification
+│   ├── bias_analysis/       # Bias detection
+│   └── language_detection/  # Language identification
+├── data/                    # Data management
+│   ├── raw/                # Input data
+│   ├── processed/          # Cleaned data
+│   └── analysis_logs/      # Analysis results
+└── src/                    # Source code
+    └── api/               # API endpoints
+```
 
-🛠️ Setup Instructions
+## 🚀 Features
 
-1. Clone the Repository
+### 1. Text Summarization
+```python
+response = requests.post('http://localhost:5000/summarize',
+                        json={'text': 'Your long article text here'})
+# Returns: {'summary': 'Concise summary of the article'}
+```
 
-git clone https://github.com/yourusername/TextAnalysis.git
-cd TextAnalysis
+### 2. Sentiment Analysis
+```python
+response = requests.post('http://localhost:5000/analyze_sentiment',
+                        json={'text': 'I love this product!'})
+# Returns: {'sentiment': 'positive', 'score': 0.89}
+```
 
-2. Create a Virtual Environment
+### 3. Topic Modeling
+```python
+response = requests.post('http://localhost:5000/analyze_topics',
+                        json={'texts': ['AI article', 'Sports news']})
+# Returns: {'topics': ['technology', 'sports']}
+```
 
-python -m venv venv
-source venv/bin/activate  # On Linux/Mac
-venv\Scripts\activate     # On Windows
+### 4. Bias Detection
+```python
+response = requests.post('http://localhost:5000/analyze_bias',
+                        json={'text': 'Article content'})
+# Returns: {'bias_score': 0.23, 'bias_type': 'minimal'}
+```
 
-3. Install Dependencies
+### 5. Language Detection
+```python
+response = requests.post('http://localhost:5000/detect_language',
+                        json={'text': 'Hello world'})
+# Returns: {'language': 'en', 'confidence': 0.98}
+```
 
+## 📋 Requirements
+
+```bash
 pip install -r requirements.txt
+```
 
-⚙️ Usage
+## ⚙️ Configuration
 
-1. Bias Analysis
-	•	Preprocess data and run analysis:
+Each analysis module has its own configuration in `models/[module]/config.py`:
+- Summarization parameters
+- Sentiment thresholds
+- Topic modeling settings
+- Bias detection rules
+- Language detection configs
 
-./scripts/bias_analysis_pipeline.sh
+## 🏃‍♂️ Usage
 
-	•	Start API:
+### Running Analysis Pipelines
+```bash
+# Run specific analysis
+./scripts/run_summarization.py
+./scripts/run_sentiment_analysis.py
+./scripts/run_topic_analysis.py
+./scripts/run_bias_analysis.py
+./scripts/run_lang_detection.py
 
-python src/api/bias_analysis_api.py
+# Run complete pipeline
+./scripts/run_full_pipeline.sh
+```
 
-	•	Example API Request:
+### Data Processing
+```bash
+# Preprocess data
+python scripts/preprocess_data.py --module summarization
+python scripts/preprocess_data.py --module sentiment
+```
 
-POST /analyze_bias
-{
-  "texts": ["This news is biased!", "Great objective reporting."]
-}
+## 🔄 Integration Points
 
-2. Sentiment Analysis
-	•	Run analysis pipeline:
+### Input
+- Raw text from scrape-text
+- Direct API submissions
+- Batch file processing
 
-./scripts/sentiment_analysis_pipeline.sh
+### Output
+- Processed results in data/[module]/analysis_logs/
+- API endpoints for each analysis type
+- Integration with content-generator
 
-	•	Start API:
+## 📊 Monitoring
 
-python src/api/sentiment_analysis_api.py
+Monitor analysis performance:
+```bash
+python scripts/check_performance.py --module summarization
+python scripts/check_performance.py --module sentiment
+```
 
-3. Topic Modeling
-	•	Run analysis pipeline:
+## 🧪 Testing
 
-./scripts/topic_analysis_pipeline.sh
-
-	•	Start API:
-
-python src/api/topic_analysis_api.py
-
-4. Language Detection
-	•	Run analysis pipeline:
-
-./scripts/lang_detection_pipeline.sh
-
-	•	Start API:
-
-python src/api/lang_detection_api.py
-
-🌐 API Endpoints
-
-Endpoint	Method	Description
-/analyze_bias	POST	Analyze text for bias
-/analyze_sentiment	POST	Analyze text sentiment
-/analyze_topics	POST	Extract topics from text
-/detect_language	POST	Detect the language of text
-
-Example Request:
-
-POST /analyze_sentiment
-{
-  "texts": ["I love this product!", "This is terrible."]
-}
-
-Example Response:
-
-[
-  {"text": "I love this product!", "sentiment": "positive"},
-  {"text": "This is terrible.", "sentiment": "negative"}
-]
-
-📊 Workflow Summary
-	1.	Data Ingestion: Raw data is loaded into data/<module>/raw/.
-	2.	Preprocessing: Data is cleaned and tokenized.
-	3.	Analysis: Models process the text and produce results.
-	4.	Logging: Results are saved in data/<module>/analysis_logs/.
-	5.	APIs: Serve analysis results via REST APIs.
-
-🧠 Extending the Project
-	•	Add more NLP modules (e.g., Named Entity Recognition).
-	•	Integrate with live data sources like Twitter APIs.
-	•	Build a frontend dashboard for visualization.
-
-🛡️ Testing
-
-Run unit tests for APIs and core logic:
-
+```bash
+# Run all tests
 pytest
 
-📄 Dependencies
-	•	nltk — Natural Language Toolkit
-	•	scikit-learn — Machine Learning Models
-	•	pandas — Data Handling
-	•	tweepy — Twitter API Integration
-	•	langdetect — Language Detection
-	•	flask — API Server
+# Test specific module
+pytest tests/test_summarization.py
+pytest tests/test_sentiment.py
+```
 
-Install with:
+## 🔒 Security
 
-pip install -r requirements.txt
+- API authentication required
+- Rate limiting implemented
+- Input validation
+- Error handling
 
-🤝 Contribution Guidelines
-	1.	Fork the repository.
-	2.	Create a new branch: git checkout -b feature-branch.
-	3.	Make your changes and commit them.
-	4.	Submit a Pull Request.
+## 🤝 Contributing
 
-📝 License
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
 
-This project is licensed under the MIT License.
+## 📝 License
 
-📬 Contact
-	•	Author: Jordan Honaker
-	•	Email: jordan@example.com
-	•	GitHub: github.com/yourusername
-
-Enjoy building with TextAnalysis! 🚀✨
+This project is licensed under the MIT License - see the LICENSE file for details.
