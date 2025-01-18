@@ -1,22 +1,4 @@
-# Data Framework
-backend/
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── com/dataframework/
-│   │   │       ├── config/           # Spring configurations
-│   │   │       ├── controller/       # REST endpoints
-│   │   │       ├── service/          # Business logic
-│   │   │       ├── model/            # Data models
-│   │   │       ├── repository/       # Data access
-│   │   │       └── orchestration/    # Python service coordination
-│   │   └── resources/
-│   │       ├── application.yml
-│   │       └── python/              # Python scripts configs
-│   └── test/
-├── pom.xml
-└── README.md
-```
+BACKEND 
 
 2. **Key Components to Create**:
 
