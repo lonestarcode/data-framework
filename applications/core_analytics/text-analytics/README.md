@@ -1,147 +1,100 @@
-# Text-Analysis
+# Text-Analytics
 
 Deep text analysis framework with configurable analysis layers and enrichment pipeline, working in conjunction with text-scrape for comprehensive text understanding.
 
-## 🎯 Purpose
-
-Text-Analysis serves as the deep understanding layer, focusing on:
-- Semantic analysis and pattern recognition
-- Entity and relationship mapping
-- Data enrichment and validation
-- Trend and anomaly detection
-
-## 🏗 Architecture
+## 🏗 Directory Structure
 
 ```
-text-analysis/
-├── src/
-│   ├── models/                 # Analysis models
-│   │   ├── semantic/          # Semantic understanding
-│   │   ├── entity/           # Entity analysis
-│   │   └── pattern/          # Pattern detection
-│   ├── enrichment/           # Data enrichment
-│   ├── pipeline/             # Processing pipeline
-│   ├── utils/                # Utilities
-│   └── dashboard/           # Control interface
-├── config/
-│   ├── models/              # Model configurations
-│   ├── enrichment/         # Enrichment settings
-│   └── monitoring/         # Dashboard config
+text-analytics/
 ├── api/
-│   └── endpoints/          # API interfaces
+│   └── endpoints/
+│       ├── analysis.py
+│       ├── enrichment.py
+│       └── feedback.py
+├── config/
+│   ├── enrichment/
+│   │   └── sources.yaml
+│   ├── models/
+│   │   ├── entity.yaml
+│   │   ├── pattern.yaml
+│   │   └── semantic.yaml
+│   └── monitoring/
+│       └── dashboard.yaml
 ├── data/
-│   ├── analysis_results/   # Processed results
-│   ├── model_artifacts/    # Model states
-│   └── training_sets/      # Training data
-└── tests/
+│   ├── analysis_results/
+│   ├── model_artifacts/
+│   └── training_sets/
+├── src/
+│   ├── analyzers/
+│   ├── dashboard/
+│   │   ├── controls.py
+│   │   ├── main.py
+│   │   └── metrics.py
+│   ├── enrichment/
+│   │   ├── cross_referencer.py
+│   │   ├── data_enricher.py
+│   │   └── source_validator.py
+│   ├── models/
+│   │   ├── entity/
+│   │   │   ├── entity_recognizer.py
+│   │   │   ├── fact_validator.py
+│   │   │   └── relationship_mapper.py
+│   │   ├── pattern/
+│   │   │   ├── anomaly_detector.py
+│   │   │   ├── correlation_finder.py
+│   │   │   └── trend_analyzer.py
+│   │   └── semantic/
+│   │       ├── context_analyzer.py
+│   │       ├── relationship_detector.py
+│   │       └── theme_extractor.py
+│   ├── pipeline/
+│   │   ├── feedback_manager.py
+│   │   ├── orchestrator.py
+│   │   └── quality_checker.py
+│   ├── processors/
+│   └── utils/
+│       ├── data_utils.py
+│       └── model_utils.py
+├── tests/
+│   ├── integration/
+│   └── unit/
+├── pipeline.py
+├── requirements.txt
+└── README.md
 ```
 
-## 🧠 Analysis Layers
+## 🧠 Components
 
-### Semantic Analysis
-- Context Understanding
-- Relationship Detection
-- Theme Extraction
-- Narrative Analysis
+### Models
+- **Semantic Analysis**: Context analysis, relationship detection, theme extraction
+- **Entity Analysis**: Entity recognition, fact validation, relationship mapping
+- **Pattern Analysis**: Anomaly detection, correlation finding, trend analysis
 
-### Entity Analysis
-- Entity Recognition
-- Relationship Mapping
-- Fact Validation
-- Source Verification
+### Pipeline
+- **Orchestration**: Pipeline management and workflow control
+- **Quality**: Feedback management and quality checking
+- **Processing**: Data processing and transformation
 
-### Pattern Recognition
-- Trend Analysis
-- Anomaly Detection
-- Correlation Finding
-- Pattern Mapping
-
-## 🔄 Enrichment Pipeline
-
-### Data Enrichment
+### Enrichment
 - Cross-referencing
-- Source Validation
-- Context Addition
-- Fact Checking
+- Data enrichment
+- Source validation
 
-### Quality Control
-- Confidence Scoring
-- Validation Checks
-- Consistency Verification
-- Source Reliability
+### API Endpoints
+- Analysis endpoints
+- Enrichment endpoints
+- Feedback endpoints
 
-## 📊 Dashboard Controls
+### Utils
+- Data utilities
+- Model utilities
 
-### Model Management
-- Layer Activation
-- Threshold Configuration
-- Pipeline Controls
-- Resource Allocation
+## 📊 Dashboard
+- Controls interface
+- Metrics tracking
+- Performance monitoring
 
-### Performance Monitoring
-- Model Metrics
-- Processing Status
-- Quality Indicators
-- Resource Usage
-
-### Analysis Controls
-- Depth Settings
-- Focus Areas
-- Priority Management
-- Resource Distribution
-
-## 🔄 Integration
-
-### Input Processing
-- Pre-filtered content from text-scrape
-- Direct submissions
-- Batch processing
-- Stream processing
-
-### Output Generation
-- Analysis Results
-- Enrichment Data
-- Pattern Insights
-- Feedback Loops
-
-## 📈 Feedback System
-
-### Scraping Feedback
-- Filter Refinement
-- Quality Metrics
-- Pattern Updates
-- Threshold Adjustments
-
-### Quality Metrics
-- Accuracy Tracking
-- Relevance Scoring
-- Confidence Levels
-- Impact Assessment
-
-## 🔒 Security
-
-- Model Protection
-- Data Validation
-- Access Control
-- Audit Logging
-- Error Handling
-
-## 🚀 Requirements
-
-- Python 3.8+
-- GPU Support
-- Redis
-- PostgreSQL
-- Docker support
-
-## 🤝 Contributing
-
-1. Fork repository
-2. Create feature branch
-3. Commit changes
-4. Push branch
-5. Create Pull Request
-
-## 📝 License
-
-MIT License - see LICENSE file
+## 🔄 Data Flow
+- Raw data input
+- Analysis processing
+- Results storage
