@@ -1,0 +1,11 @@
+schedule:
+  tweet_time: "10:00"
+  youtube_time: "14:00"
+  instagram_time: "18:00"
+  tiktok_time: "22:00"
+
+timeframes:
+  default_interval: 180
+
+database:
+  path: "config/database.db"

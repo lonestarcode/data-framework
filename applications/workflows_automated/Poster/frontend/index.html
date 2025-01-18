@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Video Posting Dashboard</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="mb-4">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div id="upload-section" class="text-center">
+                <h2>Upload Video</h2>
+                <input type="file" id="video-upload" accept="video/*" class="form-control-file mb-2">
+                <select id="album-selection" class="form-control mb-2">
+                    <option value="" disabled selected>Select Album</option>
+                    <option value="create-new">Create New Album</option>
+                    <!-- Existing albums will be populated here -->
+                </select>
+                <div id="new-album-section" style="display: none;">
+                    <input type="text" id="new-album-name" class="form-control mb-2" placeholder="Enter new album name">
+                    <button id="create-album-button" class="btn btn-primary">Create</button>
+                </div>
+            </div>
+            <div id="ai-recommendations-section" class="text-center">
+                <h2>AI Recommendations</h2>
+                <div id="category-selection" class="form-group">
+                    <label for="category">Select Category for AI Training:</label>
+                    <select id="category" class="form-control">
+                        <option value="" disabled selected>Select Category</option>
+                        <option value="sports">Sports</option>
+                        <option value="politics">Politics</option>
+                        <option value="music">Music</option>
+                        <option value="comedy">Comedy</option>
+                        <!-- Add more categories as needed -->
+                    </select>
+                </div>
+                <button id="train-ai-button" class="btn btn-primary">Train AI</button>
+                <div id="recommended-videos" class="mt-3">
+                    <!-- Recommended videos will be displayed here -->
+                </div>
+            </div>
+            <div>
+                <a href="editor.html" class="btn btn-secondary">Go to Video Editor</a>
+                <a href="scraper.html" class="btn btn-secondary">Go to Web Scraper</a>
+            </div>
+        </div>
+    </header>
+    <div id="main-container" class="container">
+        <div class="row">
+            <div id="platform-selection-container" class="col-md-6">
+                <h2>Select Platforms and Captions</h2>
+                <form id="platform-selection-form">
+                    <div class="form-group">
+                        <label><input type="checkbox" name="platform" value="twitter"> Twitter</label>
+                        <input type="text" name="twitter-caption" class="form-control" placeholder="Enter Twitter caption">
+                    </div>
+                    <div class="form-group">
+                        <label><input type="checkbox" name="platform" value="youtube"> YouTube Shorts</label>
+                        <input type="text" name="youtube-caption" class="form-control" placeholder="Enter YouTube caption">
+                    </div>
+                    <div class="form-group">
+                        <label><input type="checkbox" name="platform" value="instagram"> Instagram Reels</label>
+                        <input type="text" name="instagram-caption" class="form-control" placeholder="Enter Instagram caption">
+                    </div>
+                    <div class="form-group">
+                        <label><input type="checkbox" name="platform" value="tiktok"> TikTok</label>
+                        <input type="text" name="tiktok-caption" class="form-control" placeholder="Enter TikTok caption">
+                    </div>
+                </form>
+            </div>
+            <div id="post-options-container" class="col-md-6">
+                <div id="schedule-section" class="mb-4">
+                    <form id="schedule-form">
+                        <div class="form-group">
+                            <label for="post-time">Post Time:</label>
+                            <input type="time" id="post-time" name="post-time" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-success">Save Schedule</button>
+                    </form>
+                </div>
+                <p class="text-center my-2">or</p>
+                <div id="manual-post-section">
+                    <button id="post-selected-button" class="btn btn-warning">Post to Selected Platforms Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
