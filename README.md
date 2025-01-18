@@ -37,9 +37,6 @@ A comprehensive data science platform featuring advanced scraping, machine learn
 ### **3. Automated Workflows**
 - Workflow applications, like the `content-generator`, use processed data to create actionable outputs (e.g., articles, reports, or trading decisions).
 
-### **4. Media Processing**
-- Non-textual data, such as images and audio, are analyzed for insights or integrated with textual data for comprehensive analytics.
-
 ---
 
 ## Example Pipeline
