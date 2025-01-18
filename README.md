@@ -5,7 +5,7 @@ A comprehensive data science platform featuring advanced scraping, machine learn
 ## Core Capabilities
 
 ### Data Collection & Processing
-- Multi-source data scraping (News, Facebook, Financial APIs)
+- Multi-source data scraping 
 - Real-time data streaming and processing
 - Automated validation and cleaning pipelines
 - Structured data storage and versioning
@@ -39,36 +39,8 @@ A comprehensive data science platform featuring advanced scraping, machine learn
 
 ---
 
-## Example Pipeline
 
-1. **Scraping:**
-   - `news-scraper` collects raw articles and stores them in `raw/`.
-   
-2. **Analytics:**
-   -  processes text & media into summarized formats
-   -  provides sentiment, bias, keyword, language, etc. analysis
 
-3. **Automated Workflow:**
-   - `content-generator` combines summaries, analysis, and user input to produce polished articles, study material, lectures, etc. pertaining to the scraped data.
-
-4. **Output:**
-   - The content generated is saved and made available for user interaction or publication.
-
----
-
-## Key Features
-- **Modularity:** Each application functions independently but integrates seamlessly into the overall framework.
-- **Scalability:** New applications can be added to any category with minimal restructuring.
-- **Traceability:** Each step in the pipeline is logged for transparency and debugging.
-
----
-
-## Future Plans
-- Add more media-processing capabilities, such as video analysis.
-- Enhance integration between scraping and analytics for real-time insights.
-- Expand automated workflows to support industry-specific applications.
-
----
 
 
 *** While the framework consolidates and prepares data for machine learning analysis in a centralized data/ directory, it also retains project-specific data for user interaction. This dual approach ensures that the integrity and purpose of individual projects remain intact, enabling direct interaction and analysis without compromising the broader ML workflows***
