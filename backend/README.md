@@ -73,17 +73,6 @@ mvn spring-boot:run
 http://localhost:8080/api/v1/
 ```
 
-## Contributing
-1. Fork the repository
-2. Create feature branch
-3. Commit changes
-4. Push to branch
-5. Create Pull Request
-
-## License
-[Your License Here]
-
-
 
 
 
@@ -123,7 +112,6 @@ public class WorkflowOrchestrator {
 3. **Database Integration**:
 References the dual database approach from:
 
-```195:284:README.md
 Integrating MongoDB and SQL in your Data Science Framework can leverage the strengths of both database systems for different parts of the project. Here’s how they could interact and complement each other across the framework:
 
 1. Data Collection & Processing
