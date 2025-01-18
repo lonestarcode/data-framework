@@ -48,11 +48,11 @@ A comprehensive data science platform featuring advanced scraping, machine learn
    - `news-scraper` collects raw articles and stores them in `raw/`.
    
 2. **Analytics:**
-   - `news-summary` processes the articles into summarized formats.
-   - `text-analysis` provides sentiment and bias analysis for the summaries.
+   -  processes text & media into summarized formats
+   -  provides sentiment, bias, keyword, language, etc. analysis
 
 3. **Automated Workflow:**
-   - `content-generator` combines summaries and analysis to produce polished articles.
+   - `content-generator` combines summaries, analysis, and user input to produce polished articles pertaining to the scraped data.
 
 4. **Output:**
    - The final articles are saved and made available for user interaction or publication.
@@ -140,50 +140,6 @@ The `deployment/` directory contains:
 - Environment-specific settings
 
 
-## Available Applications
-
-### News Summarizer
-- Automated news collection and summarization
-- NLP-based content filtering
-- LLM-powered summarization (GPT-4/Claude)
-- User feedback system
-- React/TypeScript frontend
-- AWS infrastructure
-
-### Facebook Marketplace Monitor
-- Real-time listing monitoring
-- Multi-category support
-- Anti-detection measures
-- Notification system
-- Python 3.10+ compatible
-
-### Property Analysis Tool
-- Investment scenario modeling
-- AI-powered market insights
-- Interactive visualization
-- Street view integration
-- Export capabilities
-
-### Options Trading Bot
-- GPT-powered market analysis
-- Real-time options data
-- Risk management system
-- TD Ameritrade integration
-- Paper trading support
-
-### Text Analysis Core
-- Sentiment analysis
-- Topic modeling
-- Language detection
-- Bias detection
-- API integration
-
-### Listing Management Bot
-- Automated listing control
-- Scheduled operations
-- Web interface
-- Real-time monitoring
-- Flask backend
 
 
 
