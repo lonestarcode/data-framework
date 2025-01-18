@@ -1,0 +1,25 @@
+llm:
+  api_key: ${LLM_API_KEY}
+  model: "gpt-4"
+  max_tokens: 2000
+  temperature: 0.7
+
+style_guide:
+  tone: "professional"
+  max_paragraphs: 8
+  citation_style: "inline"
+  target_reading_level: "college"
+
+preprocessing:
+  min_summaries: 2
+  max_summaries: 10
+  required_fields:
+    - summary_text
+    - source
+    - sentiment_analysis
+    - bias_analysis
+
+metrics:
+  coherence_threshold: 0.7
+  bias_threshold: 0.3
+  sentiment_balance: true
