@@ -21,7 +21,7 @@ ml_analytics/
 │   ├── configs/            # Configuration files
 │   ├── experiments/        # Experiment tracking
 │   ├── governance/         # Model governance
-│   └── lineage/           # Model lineage tracking
+│   └── lineage/           # Model lineage trackin g
 └── registry/              # Model registry
 ```
 
