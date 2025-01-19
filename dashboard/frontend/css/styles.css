@@ -92,15 +92,59 @@ body {
 
 .three-column-layout {
     display: grid;
-    grid-template-columns: 160px minmax(600px, 1fr) 200px;
+    grid-template-columns: 300px 1fr;
+    grid-template-areas: 
+        "left main";
     gap: 10px;
     padding: 10px;
     height: calc(100vh - 50px);
 }
 
-.column {
+@media (max-width: 768px) {
+    .three-column-layout {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "left"
+            "main";
+        height: auto;
+        gap: 20px;
+    }
+
+    .left-column {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        height: auto;
+        min-height: 100vh;
+        overflow-y: visible;
+    }
+
+    .source-column, .filter-column {
+        margin: 0;
+        height: 100vh;
+        overflow-y: auto;
+    }
+
+    .metrics-column {
+        margin-top: 20px;
+    }
+}
+
+.left-column {
+    grid-area: left;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     height: 100%;
     overflow-y: auto;
+}
+
+.metrics-column {
+    grid-area: main;
+}
+
+.source-column, .filter-column {
+    height: auto;
 }
 
 .source-item {
@@ -154,6 +198,24 @@ body {
     color: #000080;
 }
 
+.filter-label.exclude {
+    color: #666666;
+    font-size: 0.9em;
+    font-weight: normal;
+    margin-top: -2px;
+    padding-left: 8px;
+}
+
+.filter-group.exclude {
+    margin-top: -8px;
+    margin-bottom: 16px;
+    padding-left: 8px;
+}
+
+.filter-group.exclude .tag {
+    background: #a0a0a0;
+}
+
 .checkbox-group {
     display: flex;
     flex-direction: column;
@@ -188,15 +250,6 @@ body {
     font-style: italic;
     color: #666;
     margin-top: 2px;
-}
-
-.filter-count {
-    background: #404040;
-    color: white;
-    padding: 2px 8px;
-    border-radius: 12px;
-    font-size: 0.8em;
-    margin-left: 8px;
 }
 
 .source-count {
@@ -291,4 +344,151 @@ body {
 .checkbox-group.scrollable label {
     display: block;
     padding: 3px 5px;
+}
+
+.save-config-section {
+    margin-top: 20px;
+    border-top: 1px solid #808080;
+    padding-top: 10px;
+}
+
+.saved-configs {
+    margin-top: 15px;
+}
+
+.saved-configs h4 {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    color: #000080;
+    padding: 5px;
+    background: #808080;
+    border: 2px solid;
+    border-color: #404040 #ffffff #ffffff #404040;
+    color: #ffffff;
+}
+
+.config-list {
+    background: #ffffff;
+    border: 2px solid;
+    border-color: #404040 #ffffff #ffffff #404040;
+    padding: 5px;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.config-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    margin: 2px 0;
+    background: #f0f0f0;
+}
+
+.config-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.icon-button {
+    background: #c0c0c0;
+    border: 1px solid;
+    border-color: #ffffff #404040 #404040 #ffffff;
+    padding: 2px 5px;
+    cursor: pointer;
+}
+
+.icon-button:active {
+    border-color: #404040 #ffffff #ffffff #404040;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #c0c0c0;
+    border: 2px solid;
+    border-color: #ffffff #404040 #404040 #ffffff;
+    width: 400px;
+}
+
+.modal-header {
+    background: #808080;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.modal-body {
+    padding: 15px;
+}
+
+.config-name-input {
+    margin-bottom: 15px;
+}
+
+.config-name-input input {
+    width: 100%;
+    padding: 5px;
+    border: 2px solid;
+    border-color: #404040 #ffffff #ffffff #404040;
+    margin-top: 5px;
+}
+
+.modal-footer {
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.default-config {
+    margin-top: 15px;
+}
+
+.default-config h4 {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    padding: 5px;
+    background: #808080;
+    border: 2px solid;
+    border-color: #404040 #ffffff #ffffff #404040;
+    color: #ffffff;
+}
+
+.default-config .config-item {
+    background: #e6e6e6;
 }

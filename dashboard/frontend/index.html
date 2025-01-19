@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Extractor</title>
+    <title>Odessa</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -10,7 +10,7 @@
     <div class="header">
         <div class="nav-container">
             <a href="/" class="nav-title">
-                <i class="fas fa-robot"></i>&nbsp;Extractor
+                <i class="fas fa-robot"></i>
             </a>
             <div class="auth-links">
                 <button class="settings-button">
@@ -21,36 +21,74 @@
     </div>
 
     <div class="three-column-layout">
-        <!-- Left Column - Source Selection -->
-        <div class="column source-column category">
-            <h3>Data Sources <span class="source-count">3 active</span></h3>
-            <div class="source-list">
-                <div class="source-item">
-                    <i class="fab fa-youtube"></i>
-                    <span>YouTube</span>
+        <!-- Left Column - Sources and Filters -->
+        <div class="left-column">
+            <!-- Data Sources Section -->
+            <div class="source-column category">
+                <h3>Data Sources <span class="source-count">3 active</span></h3>
+                <div class="source-list">
+                    <div class="source-item">
+                        <i class="fab fa-youtube"></i>
+                        <span>YouTube</span>
+                    </div>
+                    <div class="source-item">
+                        <i class="fab fa-twitter"></i>
+                        <span>Twitter</span>
+                    </div>
+                    <div class="source-item">
+                        <i class="fab fa-facebook"></i>
+                        <span>Facebook Marketplace</span>
+                    </div>
+                    <div class="source-item">
+                        <i class="fas fa-home"></i>
+                        <span>Zillow</span>
+                    </div>
+                    <div class="source-search">
+                        <input type="text" class="search-input" placeholder="Search or add source...">
+                        <button class="action-button">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
                 </div>
-                <div class="source-item">
-                    <i class="fab fa-twitter"></i>
-                    <span>Twitter</span>
+            </div>
+
+            <!-- Configurations Section -->
+            <div class="configurations-column category">
+                <div class="default-config">
+                    <h4>Default Configuration</h4>
+                    <div class="config-item">
+                        <span class="config-name">General</span>
+                        <div class="config-actions">
+                            <button class="icon-button" title="Load Configuration">
+                                <i class="fas fa-upload"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div class="source-item">
-                    <i class="fab fa-facebook"></i>
-                    <span>Facebook Marketplace</span>
+                
+                <div class="saved-configs">
+                    <h4>Saved Configurations</h4>
+                    <div class="config-list">
+                        <!-- Configurations will be populated by JavaScript -->
+                    </div>
                 </div>
-                <div class="source-item">
-                    <i class="fas fa-home"></i>
-                    <span>Zillow</span>
+            </div>
+
+            <!-- Filters Section -->
+            <div class="filter-column category">
+                <h3><span class="filter-count">6</span></h3>
+                <div class="filter-section">
+                    <!-- Filters will be populated by JavaScript -->
                 </div>
-                <div class="source-search">
-                    <input type="text" class="search-input" placeholder="Search or add source...">
-                    <button class="action-button">
-                        <i class="fas fa-plus"></i>
+                <div class="save-actions">
+                    <button class="action-button save-config" title="Save Configuration">
+                        <i class="fas fa-save"></i>
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- Middle Column - Analytics Dashboard -->
+        <!-- Main Column - Analytics Dashboard -->
         <div class="column metrics-column">
             <div class="category">
                 <h3>Data Collection Status</h3>
@@ -78,34 +116,34 @@
                 </div>
             </div>
         </div>
-
-        <!-- Right Column - Filters/Configuration -->
-        <div class="column filter-column category">
-            <h3>Active Filters <span class="filter-count">6</span></h3>
-            <div class="filter-section">
-                <div class="filter-group">
-                    <label class="filter-label">Content Type</label>
-                    <div class="checkbox-group">
-                        <label><input type="checkbox" checked> Text</label>
-                        <label><input type="checkbox" checked> Images</label>
-                        <label><input type="checkbox"> Videos</label>
-                    </div>
-                </div>
-                <div class="filter-group">
-                    <label class="filter-label">Update Frequency</label>
-                    <select class="filter-select">
-                        <option>Real-time</option>
-                        <option selected>Every 5 minutes</option>
-                        <option>Every hour</option>
-                    </select>
-                </div>
-                <button class="action-button">
-                    <i class="fas fa-save"></i> Save Configuration
-                </button>
-            </div>
-        </div>
     </div>
 
     <script src="js/main.js"></script>
+
+    <!-- Add this modal HTML at the end of body -->
+    <div id="saveConfigModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Save Filter Configuration</h3>
+                <button class="close-button">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="config-name-input">
+                    <label>Configuration Name</label>
+                    <input type="text" placeholder="Enter a name for this configuration">
+                </div>
+                <div class="config-options">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="makeDefault">
+                        Set as default configuration for this source
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="action-button cancel">Cancel</button>
+                <button class="action-button save">Save Configuration</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
