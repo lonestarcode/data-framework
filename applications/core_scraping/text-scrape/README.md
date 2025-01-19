@@ -16,6 +16,11 @@ text-scrape/
 │   ├── processed/             # Processed text
 │   └── raw/                   # Raw scraped data
 └── src/                        # Source code
+    ├── scrapers/              # Data collection
+    │   ├── base_text_scraper.py  # Base text scraping functionality
+    │   ├── document_scraper.py   # Document format scraping
+    │   ├── news_scraper.py       # News content scraping
+    │   └── social_scraper.py     # Social media scraping
     ├── cache/                 # Cache management
     ├── dashboard/             # Monitoring interface
     ├── error_handlers/        # Error management
@@ -28,7 +33,6 @@ text-scrape/
     ├── proxy_management/     # Proxy handling
     ├── rate_limiters/        # Request throttling
     ├── schemas/              # Data validation
-    ├── scrapers/             # Data collection
     ├── storage_rules/        # Storage management
     └── validators/           # Input validation
 ```
@@ -36,9 +40,25 @@ text-scrape/
 ## 🚀 Features
 
 ### Data Collection
-- **Document Scraping**: PDF, DOC, and other document formats
-- **News Scraping**: News websites and articles
-- **Social Media Scraping**: Social platform content
+- **Document Scraping**: 
+  - Supports PDF, DOCX, and TXT formats
+  - Metadata extraction
+  - Content parsing with error handling
+- **News Scraping**: 
+  - Article extraction
+  - Title, content, and author parsing
+  - Publication date detection
+- **Social Media Scraping**:
+  - Support for Twitter, LinkedIn, and Facebook
+  - API-based content retrieval
+  - Platform-specific data parsing
+
+### Base Functionality
+- **BaseTextScraper**:
+  - Async HTTP session management
+  - Common text cleaning utilities
+  - HTML content extraction
+  - Text validation methods
 
 ### Content Filtering
 - **Advisory Filters**
@@ -85,21 +105,31 @@ alembic upgrade head
 
 ## 🔄 Usage
 
-1. Start the scraper:
-```bash
-python src/main.py
-```
+### Basic Scraping Example
+```python
+from src.scrapers.document_scraper import DocumentScraper
+from src.scrapers.news_scraper import NewsScraper
+from src.scrapers.social_scraper import SocialScraper
 
-2. Monitor via dashboard:
-```bash
-python src/dashboard/main.py
-```
+# Document scraping
+async with DocumentScraper() as doc_scraper:
+    docs = await doc_scraper.scrape({
+        'url': 'https://example.com/document.pdf',
+        'format': 'pdf'
+    })
 
-## 🧪 Testing
+# News scraping
+async with NewsScraper() as news_scraper:
+    articles = await news_scraper.scrape({
+        'url': 'https://news-site.com/article'
+    })
 
-Run tests:
-```bash
-pytest tests/
+# Social media scraping
+async with SocialScraper() as social_scraper:
+    posts = await social_scraper.scrape({
+        'platform': 'twitter',
+        'query': 'search term'
+    })
 ```
 
 ## 📊 Data Flow
@@ -131,3 +161,6 @@ pytest tests/
 3. Commit changes
 4. Push to the branch
 5. Create a Pull Request
+
+
+

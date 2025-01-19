@@ -1,0 +1,250 @@
+.container {
+  padding: 24px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.controls {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.select {
+  padding: 8px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background: white;
+}
+
+.viewToggle {
+  display: flex;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.toggleButton {
+  padding: 8px 16px;
+  border: none;
+  background: white;
+  cursor: pointer;
+}
+
+.toggleButton.active {
+  background: #4299e1;
+  color: white;
+}
+
+.refreshButton {
+  padding: 8px 16px;
+  background: #48bb78;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.chartContainer {
+  height: 400px;
+  margin-top: 24px;
+}
+
+.gridContainer {
+  margin-top: 24px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.table th {
+  background: #f7fafc;
+  cursor: pointer;
+}
+
+.sortIndicator {
+  margin-left: 4px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.pagination button {
+  padding: 8px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.loading {
+  text-align: center;
+  padding: 48px;
+  color: #4a5568;
+}
+
+.error {
+  text-align: center;
+  padding: 48px;
+  color: #e53e3e;
+}
+
+.metricsPanel {
+  display: grid;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.metricCard {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: transform 0.2s;
+}
+
+.metricCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.metricIcon {
+  font-size: 24px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f7fafc;
+  border-radius: 8px;
+}
+
+.metricContent {
+  flex: 1;
+}
+
+.metricTitle {
+  font-size: 14px;
+  color: #4a5568;
+  margin: 0 0 4px 0;
+}
+
+.metricValue {
+  font-size: 24px;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.metricChange {
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.positive {
+  color: #48bb78;
+}
+
+.negative {
+  color: #e53e3e;
+}
+
+.metricDetails {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.detailSection {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.detailSection h4 {
+  margin: 0 0 16px 0;
+  color: #2d3748;
+  font-size: 16px;
+}
+
+.detailGrid {
+  display: grid;
+  gap: 12px;
+}
+
+.detailItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.detailItem:last-child {
+  border-bottom: none;
+}
+
+.detailItem span:first-child {
+  color: #4a5568;
+}
+
+.detailItem span:last-child {
+  font-weight: 500;
+  color: #2d3748;
+}
+
+@media (min-width: 768px) {
+  .metricsPanel {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .metricDetails {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 767px) {
+  .metricsPanel {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .metricCard {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .metricIcon {
+    margin: 0 auto;
+  }
+}
