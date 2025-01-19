@@ -2,10 +2,35 @@
 
 A comprehensive data science platform featuring advanced scraping, machine learning, and automated workflow capabilities. This framework provides a production-ready foundation for building and deploying data-driven applications.
 
+### Data Layer
+The system uses a dual-database approach for optimal data handling:
 
+#### Local Databases (Application-Specific)
+- Maintains raw data in original format
+- Direct application operations
+- Project-specific schemas
+- Independent scaling
 
+#### Global Database (`data/`)
+- Centralized ML/analytics storage
+- Standardized formats
+- Cross-project accessibility
+- Bidirectional data flow
 
-Let me explain the role of each main folder in this data science framework:
+### Database Integration
+
+## MongoDB Usage
+- Raw data storage (referenced in lines 119-125 of backend/README.md)
+- Real-time streams
+- Flexible schemas
+- Model predictions
+
+## SQL Usage
+- Validated metrics (referenced in lines 127-132 of backend/README.md)
+- Performance tracking
+- Audit trails
+- Structured analytics
+
 
 ### 1. Backend Folder
 The backend folder contains a Spring Boot service that acts as the orchestration layer for the entire framework. Based on the README:

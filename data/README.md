@@ -1,10 +1,3 @@
-
-
-Here's a README.md for your data folder that explains its purpose and structure:
-
-```markdown:data/README.md
-# Global Data Management
-
 This directory manages the centralized data storage for ML training and cross-project analytics, implementing the data workflow described in the architecture documentation.
 
 ## Directory Structure
