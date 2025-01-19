@@ -53,3 +53,18 @@ mlflow/artifacts/
 # Secrets
 security/secrets/ 
 
+# Dependencies
+node_modules/
+.cache/
+
+# Environment
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Cache files
+*.pack
+.cache/
+
