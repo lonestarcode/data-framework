@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scraping Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="header">
+        <div class="nav-container">
+            <a href="/" class="nav-title">
+                <i class="fas fa-robot"></i>&nbsp;Scraping Dashboard
+            </a>
+            <div class="auth-links">
+                <button class="settings-button">
+                    <i class="fas fa-cog"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="three-column-layout">
+        <!-- Left Column - Source Selection -->
+        <div class="column source-column category">
+            <h3>Data Sources</h3>
+            <div class="source-list">
+                <div class="source-item">
+                    <i class="fab fa-youtube"></i>
+                    <span>YouTube</span>
+                </div>
+                <div class="source-item">
+                    <i class="fab fa-twitter"></i>
+                    <span>Twitter</span>
+                </div>
+                <div class="source-item">
+                    <i class="fab fa-facebook"></i>
+                    <span>Facebook Marketplace</span>
+                </div>
+                <div class="source-item">
+                    <i class="fas fa-home"></i>
+                    <span>Zillow</span>
+                </div>
+                <div class="source-search">
+                    <input type="text" class="search-input" placeholder="Search or add source...">
+                    <button class="action-button">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Middle Column - Metrics Dashboard -->
+        <div class="column metrics-column">
+            <div class="category">
+                <h3>Scraping Metrics</h3>
+                <div class="metrics-grid">
+                    <div class="metric-item">
+                        <span class="metric-label">Active Sources:</span>
+                        <span class="metric-value" id="activeSources">0</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Items Scraped:</span>
+                        <span class="metric-value" id="itemsScraped">0</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">Success Rate:</span>
+                        <span class="metric-value" id="successRate">0%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category">
+                <h3>Recent Activity</h3>
+                <div id="activityList" class="activity-container">
+                    <!-- Activity items will be populated here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column - Filters/Configuration -->
+        <div class="column filter-column category">
+            <h3>Filters & Configuration</h3>
+            <div class="filter-section">
+                <div class="filter-group">
+                    <label class="filter-label">Content Type</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox"> Text</label>
+                        <label><input type="checkbox"> Images</label>
+                        <label><input type="checkbox"> Videos</label>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">Update Frequency</label>
+                    <select class="filter-select">
+                        <option>Real-time</option>
+                        <option>Every 5 minutes</option>
+                        <option>Every hour</option>
+                    </select>
+                </div>
+                <button class="action-button">
+                    <i class="fas fa-save"></i> Save Configuration
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
