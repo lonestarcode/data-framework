@@ -1,0 +1,54 @@
+model_registry:
+  version_control:
+    tracking_metrics:
+      - accuracy
+      - latency
+      - resource_usage
+      - f1_score
+      - precision
+      - recall
+    metadata:
+      - training_data_hash
+      - hyperparameters
+      - deployment_status
+      - model_architecture
+      - training_duration
+      - resource_consumption
+  
+  templates:
+    nlp:
+      default_architecture: "transformer"
+      vocab_size: 30000
+      max_length: 512
+    market:
+      default_architecture: "lstm"
+      sequence_length: 60
+      features: ["price", "volume", "indicators"]
+    vision:
+      default_architecture: "cnn"
+      input_shape: [224, 224, 3]
+      preprocessing: "standard"
+  
+  storage:
+    metadata_path: "registry/metadata"
+    versioning_path: "registry/versioning"
+    artifacts_path: "shared/artifacts"
+    templates_path: "registry/templates"
+
+  validation:
+    required_metrics:
+      - accuracy
+      - f1_score
+      - latency_ms
+    performance_thresholds:
+      accuracy: 0.85
+      f1_score: 0.80
+      latency_ms: 100
+      precision: 0.75
+      recall: 0.75
+
+  monitoring:
+    track_resource_usage: true
+    save_training_logs: true
+    metrics_history: true
+    drift_detection: true

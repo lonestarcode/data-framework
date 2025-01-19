@@ -1,0 +1,21 @@
+initial_training:
+  validation:
+    thresholds:
+      accuracy: 0.85
+      f1_score: 0.80
+      precision: 0.75
+      recall: 0.75
+  
+  training:
+    batch_size: 64
+    epochs: 10
+    learning_rate: 0.001
+    validation_split: 0.2
+    
+  monitoring:
+    track_metrics:
+      - loss
+      - accuracy
+      - resource_usage
+    save_checkpoints: true
+    checkpoint_frequency: 5 
