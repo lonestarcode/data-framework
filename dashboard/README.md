@@ -1,6 +1,4 @@
-Here's a comprehensive README for your frontend dashboard:
 
-````markdown:dashboard/README.md
 # Analytics Dashboard Frontend
 
 A modern React-based analytics dashboard for monitoring and managing data filtering operations.
