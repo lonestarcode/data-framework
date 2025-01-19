@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Scraping Dashboard</title>
+    <title>Extractor</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -10,7 +10,7 @@
     <div class="header">
         <div class="nav-container">
             <a href="/" class="nav-title">
-                <i class="fas fa-robot"></i>&nbsp;Scraping Dashboard
+                <i class="fas fa-robot"></i>&nbsp;Extractor
             </a>
             <div class="auth-links">
                 <button class="settings-button">
@@ -23,7 +23,7 @@
     <div class="three-column-layout">
         <!-- Left Column - Source Selection -->
         <div class="column source-column category">
-            <h3>Data Sources</h3>
+            <h3>Data Sources <span class="source-count">3 active</span></h3>
             <div class="source-list">
                 <div class="source-item">
                     <i class="fab fa-youtube"></i>
@@ -50,22 +50,23 @@
             </div>
         </div>
 
-        <!-- Middle Column - Metrics Dashboard -->
+        <!-- Middle Column - Analytics Dashboard -->
         <div class="column metrics-column">
             <div class="category">
-                <h3>Scraping Metrics</h3>
+                <h3>Data Collection Status</h3>
                 <div class="metrics-grid">
                     <div class="metric-item">
-                        <span class="metric-label">Active Sources:</span>
-                        <span class="metric-value" id="activeSources">0</span>
+                        <span class="metric-label">Update Frequency:</span>
+                        <span class="metric-value" id="updateFreq">5 min</span>
+                        <span class="last-updated">Last updated 2 min ago</span>
                     </div>
                     <div class="metric-item">
-                        <span class="metric-label">Items Scraped:</span>
-                        <span class="metric-value" id="itemsScraped">0</span>
+                        <span class="metric-label">Raw Data Size:</span>
+                        <span class="metric-value" id="rawDataSize">1.2 GB</span>
                     </div>
                     <div class="metric-item">
-                        <span class="metric-label">Success Rate:</span>
-                        <span class="metric-value" id="successRate">0%</span>
+                        <span class="metric-label">Processed Items:</span>
+                        <span class="metric-value" id="processedItems">8,432</span>
                     </div>
                 </div>
             </div>
@@ -80,13 +81,13 @@
 
         <!-- Right Column - Filters/Configuration -->
         <div class="column filter-column category">
-            <h3>Filters & Configuration</h3>
+            <h3>Active Filters <span class="filter-count">6</span></h3>
             <div class="filter-section">
                 <div class="filter-group">
                     <label class="filter-label">Content Type</label>
                     <div class="checkbox-group">
-                        <label><input type="checkbox"> Text</label>
-                        <label><input type="checkbox"> Images</label>
+                        <label><input type="checkbox" checked> Text</label>
+                        <label><input type="checkbox" checked> Images</label>
                         <label><input type="checkbox"> Videos</label>
                     </div>
                 </div>
@@ -94,7 +95,7 @@
                     <label class="filter-label">Update Frequency</label>
                     <select class="filter-select">
                         <option>Real-time</option>
-                        <option>Every 5 minutes</option>
+                        <option selected>Every 5 minutes</option>
                         <option>Every hour</option>
                     </select>
                 </div>

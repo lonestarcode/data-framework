@@ -181,3 +181,114 @@ body {
 .action-button:active {
     border-color: #404040 #ffffff #ffffff #404040;
 }
+
+.last-updated {
+    display: block;
+    font-size: 0.8em;
+    font-style: italic;
+    color: #666;
+    margin-top: 2px;
+}
+
+.filter-count {
+    background: #404040;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    margin-left: 8px;
+}
+
+.source-count {
+    background: #404040;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    margin-left: 8px;
+}
+
+.source-item.active {
+    background: #d0d0d0;
+    border-color: #404040 #ffffff #ffffff #404040;
+}
+
+.range-inputs {
+    display: flex;
+    gap: 10px;
+}
+
+.range-inputs input {
+    width: 80px;
+    padding: 3px;
+    border: 2px solid;
+    border-color: #404040 #ffffff #ffffff #404040;
+}
+
+.filter-range {
+    width: 100%;
+    margin: 5px 0;
+}
+
+.range-value {
+    font-size: 0.8em;
+    color: #404040;
+}
+
+.no-filters {
+    padding: 10px;
+    color: #666;
+    font-style: italic;
+    text-align: center;
+}
+
+.tag-input {
+    background: #ffffff;
+    border: 2px solid;
+    border-color: #404040 #ffffff #ffffff #404040;
+    padding: 5px;
+}
+
+.tag-input input {
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 3px;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.tag {
+    background: #808080;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.tag i {
+    cursor: pointer;
+    font-size: 0.8em;
+}
+
+.checkbox-group.scrollable {
+    max-height: 100px;
+    overflow-y: auto;
+    padding-right: 5px;
+    background: #ffffff;
+    border: 2px solid;
+    border-color: #404040 #ffffff #ffffff #404040;
+}
+
+.checkbox-group.scrollable label {
+    display: block;
+    padding: 3px 5px;
+}
