@@ -1,0 +1,30 @@
+training:
+  batch_size: 32
+  epochs: 10
+  validation_split: 0.2
+  early_stopping:
+    enabled: true
+    patience: 3
+    min_delta: 0.001
+
+preprocessing:
+  steps:
+    - name: "data_validation"
+      enabled: true
+    - name: "feature_extraction"
+      enabled: true
+    - name: "normalization"
+      enabled: true
+
+evaluation:
+  metrics:
+    - accuracy
+    - precision
+    - recall
+    - f1_score
+  threshold: 0.5
+
+monitoring:
+  enabled: true
+  log_level: "INFO"
+  metrics_interval: 100 
