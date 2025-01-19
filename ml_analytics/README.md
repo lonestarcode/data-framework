@@ -8,21 +8,26 @@ ml_analytics/
 │   ├── base/                  # Base interfaces and abstractions
 │   ├── experimental/          # Research and testing
 │   ├── production/           # Production models by domain
-│   │   ├── market/          # Market analysis models
-│   │   ├── nlp/             # Natural language models
-│   │   └── vision/          # Computer vision models
 │   └── trained/             # Trained model artifacts by stage
+├── registry/
+│   ├── initial_training/    # First-time model training
+│   │   ├── configs/        # Initial training configs
+│   │   └── templates/      # Model templates
+│   ├── versioning/         # Version control
+│   ├── metadata/           # Model metadata
+│   └── registry.yaml       # Registry configuration
 ├── pipelines/
-│   ├── training/            # Training workflows
-│   ├── evaluation/          # Testing and validation
-│   └── deployment/          # Production deployment
-├── shared/                  # Shared resources
-│   ├── artifacts/          # Model artifacts
-│   ├── configs/            # Configuration files
-│   ├── experiments/        # Experiment tracking
-│   ├── governance/         # Model governance
-│   └── lineage/           # Model lineage trackin g
-└── registry/              # Model registry
+│   ├── training/           # Training workflows
+│   │   ├── continuous/     # Continuous training
+│   │   └── fine_tuning/    # Model tuning
+│   ├── evaluation/
+│   └── deployment/
+└── shared/                  # Shared resources
+    ├── artifacts/          # Model artifacts
+    ├── configs/            # Configuration files
+    ├── experiments/        # Experiment tracking
+    ├── governance/         # Model governance
+    └── lineage/           # Model lineage trackin g
 ```
 
 ## Framework Integration
