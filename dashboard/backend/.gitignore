@@ -9,4 +9,9 @@ venv/
 ENV/
 .pytest_cache/
 .coverage
-htmlcov/
+htmlcov
+node_modules/
+.cache/
+build/
+dist/
+.env
