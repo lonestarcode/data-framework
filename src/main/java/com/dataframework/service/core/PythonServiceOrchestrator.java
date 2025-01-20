@@ -1,4 +1,4 @@
-package com.dataframework.service;
+package core;
 
 import org.springframework.stereotype.Service;
 

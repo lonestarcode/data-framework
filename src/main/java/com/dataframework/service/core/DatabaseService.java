@@ -1,4 +1,4 @@
-package com.dataframework.service;
+package core;
 
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;

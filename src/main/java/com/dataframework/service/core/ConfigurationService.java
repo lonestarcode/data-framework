@@ -1,6 +1,7 @@
-package com.dataframework.service;
+package core;
 
 import org.springframework.stereotype.Service;
+
 import java.util.Map;
 
 @Service
