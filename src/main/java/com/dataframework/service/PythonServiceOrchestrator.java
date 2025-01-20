@@ -13,8 +13,19 @@ import java.util.stream.Collectors;
 @Service
 public class PythonServiceOrchestrator {
     private final ProcessBuilder processBuilder;
+    private final MonitoringService monitoringService;
 
-    public CompletableFuture<ProcessResult> executePythonScript(String scriptPath, Map<String, String> params) {
+    public CompletableFuture<ProcessResult> executePythonScript(
+        String scriptPath, 
+        Map<String, String> params,
+        boolean trackMetrics
+    ) {
+        if (trackMetrics) {
+            monitoringService.trackMetrics("python_execution", Map.of(
+                "script", scriptPath,
+                "params", params
+            ));
+        }
         return CompletableFuture.supplyAsync(() -> {
             try {
                 List<String> command = new ArrayList<>();
