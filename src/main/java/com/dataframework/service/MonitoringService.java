@@ -17,18 +17,22 @@ public class MonitoringService {
     private final DatabaseService databaseService;
     
     public void trackMetrics(String component, Map<String, Object> metrics) {
-        // Single point for metrics tracking
-        // Referenced in ml_analytics/README.md lines 69-72
+        Document doc = new Document()
+            .append("component", component)
+            .append("metrics", metrics)
+            .append("timestamp", new Date());
+        databaseService.storeMetrics("system_metrics", doc);
     }
     
     public void logEvent(String eventType, Map<String, Object> eventData) {
-        // Single point for event logging
-        // Referenced in backend/README.md lines 27-29
+        Document doc = new Document()
+            .append("type", eventType)
+            .append("data", eventData)
+            .append("timestamp", new Date());
+        databaseService.storeEvent("system_events", doc);
     }
     
-    public List<Document> getMetrics(String componentId, Date startTime, Date endTime) {
-        Query query = new Query(Criteria.where("componentId").is(componentId)
-            .and("timestamp").gte(startTime).lte(endTime));
-        return mongoTemplate.find(query, Document.class, "system_metrics");
+    public List<Document> getMetrics(String component, Date startTime, Date endTime) {
+        return databaseService.fetchMetrics(component, startTime, endTime);
     }
 } 

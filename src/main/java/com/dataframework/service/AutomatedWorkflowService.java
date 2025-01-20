@@ -7,7 +7,7 @@ import java.util.Map;
 
 @Service
 public class AutomatedWorkflowService {
-    private final UnifiedWorkflowOrchestrator workflowOrchestrator;
+    private final AutomatedWorkflowOrchestrator workflowOrchestrator;
     private final MonitoringService monitoringService;
     
     @Scheduled(fixedRate = 3600000) // Run every hour
@@ -16,10 +16,8 @@ public class AutomatedWorkflowService {
             "timestamp", new Date()
         ));
         
-        // Execute automated workflows based on configuration
-        workflowOrchestrator.executeWorkflow(
-            "DATA_PROCESSING",
-            null,
+        workflowOrchestrator.executeAutomatedTask(
+            "scheduled_processing",
             Map.of("scheduled", true)
         );
     }
