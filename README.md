@@ -17,6 +17,46 @@ The system uses a dual-database approach for optimal data handling:
 - Cross-project accessibility
 - Bidirectional data flow
 
+
+## Data Processing Pipeline
+
+### 1. Data Collection
+- Applications collect raw data through various scrapers and APIs
+- Each application maintains its own collection logic while adhering to global standards
+
+### 2. Data Consolidation
+All data flows through a standardized directory structure:
+```
+data/
+├── raw/        # Initial unprocessed data from all sources
+├── processed/  # Cleaned and normalized datasets
+└── validated/  # Production-ready data for ML models
+```
+
+### 3. Machine Learning Workflow
+The `ml/` directory manages the complete ML lifecycle:
+- Model training using validated datasets
+- Evaluation metrics and performance tracking
+- Model versioning and deployment
+- Continuous training pipelines
+
+### 4. Monitoring and Feedback
+Integrated monitoring system tracks:
+- Data quality metrics
+- Processing pipeline performance
+- Model accuracy and drift
+- System resource utilization
+- User feedback and corrections
+
+### 5. Deployment
+The `deployment/` directory contains:
+- Docker configurations for containerization
+- Kubernetes manifests for orchestration
+- Cloud infrastructure templates (AWS CDK)
+- CI/CD pipeline configurations
+- Environment-specific settings
+
+
 ### Database Integration
 
 ## MongoDB Usage
@@ -656,12 +696,3 @@ cd infrastructure
 cdk deploy
 ```
 
-## Documentation
-
-Each advanced application includes detailed documentation:
-- [News Summarizer Documentation](projects/applications/news-summary/README.md)
-- [Facebook Marketplace Documentation](projects/applications/facebook-market/README.md)
-- [Property Analysis Documentation](projects/applications/property-analysis/README.md)
-- [Options Trading Documentation](projects/applications/options-trader/README.md)
-- [Text Analysis Documentation](projects/applications/text-analysis/README.md)
-- [Listing Bot Documentation](projects/applications/listing-bot/README.md)
